@@ -1,0 +1,30 @@
+.Nav_header{
+	background-color: #000000;
+	padding: 12px 50px;
+	justify-content: space-around;
+	display: flex;
+	gap: 20px;
+}
+.Nav_header p{
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color: #FAFAFA;
+}
+.Nav_header span{
+font-weight: 700;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color: #FAFAFA;
+}
+.Nav_header select{
+color: #FAFAFA;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+background-color: #000000;
+border: none;
+}
