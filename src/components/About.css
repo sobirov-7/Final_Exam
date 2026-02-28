@@ -1,0 +1,30 @@
+.About {
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+  padding: 50px 0;
+	text-align: center;
+}
+
+.textbox1 {
+  /* max-width: 500px; */
+	width: 50%;
+	justify-content: center;
+}
+
+.textbox1 h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.textbox1 p {
+  line-height: 1.6;
+  color: #555;
+}
+.imgbox1{
+	width: 50%;
+}
+.imgbox1 img {
+  /* max-width: 400px; */
+  width: 100%;
+}

@@ -13,6 +13,8 @@ import Account from '../components/Account.jsx'
 import ProductDetails from '../components/ProductDetails.jsx'
 import { FaRegHeart } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
+import { IoPersonOutline } from "react-icons/io5";
+
 
 
 
@@ -44,6 +46,7 @@ const Navbar = () => {
 					<input type="text" placeholder='What are you looking for?'/>
 					<span><Link to={"/wishlist"}><FaRegHeart/></Link></span>
 					<span><Link to={'/cart'}><FiShoppingCart/></Link></span>
+					<span><Link to={'/sign'}><IoPersonOutline/></Link></span>
 				</div>
 			</nav>
 		</div>

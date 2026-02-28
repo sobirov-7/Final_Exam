@@ -13,23 +13,22 @@ import Account from './components/Account'
 import ProductDetails from './components/ProductDetails'
 
 
-
 function App() {
 
   return (
     <>
       <Navbar/>
       <Routes>
-        <Route path='/' element='<Home/>'/>
-        <Route path='/contact' element='<Contact/>'/>
-        <Route path='/about' element='<About/>'/>
-        <Route path='/sign' element='<Sign/>'/>
-        <Route path='/*' element='<NotFound/>'/>
-        <Route path='/wishlist' element='<Wishlist/>'/>
-        <Route path='/cart' element='<Cart/>'/>
-        <Route path='/checkout' element='<Checkout/>'/>
-        <Route path='/account' element='<Account/>'/>
-        <Route path='/cart/:id' element='<ProductDetails/>'/>
+        <Route path='/' element= {<Home/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/sign' element={<Sign/>}/>
+        <Route path='/*' element={<NotFound/>}/>
+        <Route path='/wishlist' element={<Wishlist/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/account' element={<Account/>}/>
+        <Route path='/cart/:id' element={<ProductDetails/>}/>
       </Routes>
     </>
   )
