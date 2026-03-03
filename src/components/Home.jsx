@@ -15,6 +15,7 @@ import img15 from '../assets/mers.svg'
 import img16 from '../assets/butsa.svg'
 import img17 from '../assets/joystik.svg'
 import img18 from '../assets/vitrovka.svg'
+import { BsSmartwatch } from "react-icons/bs";
 import {
   FaMobileAlt,
   FaDesktop,
@@ -24,6 +25,7 @@ import {
 } from "react-icons/fa";
 import { IoWatchOutline } from "react-icons/io5";
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi";
+import { useNavigate } from 'react-router-dom'
 // import Card from "./Cards";
 const products = [
   {
@@ -80,6 +82,9 @@ const products = [
 ];
 
 const Home = () => {
+
+    let navigate = useNavigate()
+
   return (
     <>
       <section className="section2">
@@ -140,13 +145,13 @@ const Home = () => {
                 <span className="discount">{item.discount}</span>
 
                 <div className="icons">
-                  <FaRegHeart />
+                  <FaRegHeart onClick={()=> navigate('/wishlist')}/>
                   <FaEye />
                 </div>
 
                 <img src={item.img} alt="" />
 
-                <button className="add_cart">Add To Cart</button>
+                <button className="add_cart" onClick={()=> navigate('/cart')}>Add To Cart</button>
               </div>
 
               <h3>{item.name}</h3>

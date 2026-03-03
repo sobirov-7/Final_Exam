@@ -11,6 +11,7 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import Account from './components/Account'
 import ProductDetails from './components/ProductDetails'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/account' element={<Account/>}/>
         <Route path='/cart/:id' element={<ProductDetails/>}/>
       </Routes>
+      <Footer/>
     </>
   )
 }

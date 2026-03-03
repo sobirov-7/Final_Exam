@@ -1,30 +1,141 @@
-.About {
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.section1_about{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+}
+
+.imgg20{
+    width: 40%;
+    height: auto;
+}
+.h11{
+    font-size: 54px;
+    font-weight: 600;
+    line-height: 64px;
+    color: #000000;
+    letter-spacing: 6%;
+}
+
+.p11{
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.section2_about {
+  padding: 60px 0;
   display: flex;
-  align-items: center;      
-  justify-content: center;  
-  padding: 50px 0;
-	text-align: center;
+  justify-content: center;
 }
 
-.textbox1 {
-  /* max-width: 500px; */
-	width: 50%;
-	justify-content: center;
+.about_stats {
+  display: flex;
+  gap: 30px;
 }
 
-.textbox1 h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
+.stat_card {
+  width: 220px;
+  height: 160px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  transition: 0.3s;
 }
 
-.textbox1 p {
-  line-height: 1.6;
-  color: #555;
+.stat_card.active {
+  background: #db4444;
+  color: #fff;
 }
-.imgbox1{
-	width: 50%;
+
+.stat_card .icon {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-size: 24px;
 }
-.imgbox1 img {
-  /* max-width: 400px; */
+
+.stat_card.active .icon {
+  background: #fff;
+  color: #db4444;
+}
+
+.stat_card h3 {
+  font-size: 22px;
+  margin: 10px 0 5px;
+}
+
+.stat_card p {
+  font-size: 14px;
+}
+
+.section3_about {
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.about_team {
+  display: flex;
+  gap: 40px;
+}
+
+.team_card {
+  text-align: center;
+}
+
+.team_img {
+  width: 250px;
+  height: 260px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.team_img img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team_card h3 {
+  font-size: 20px;
+  margin: 10px 0 5px;
+}
+
+.team_card p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.team_icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 18px;
+}
+
+.team_icons svg {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.team_icons svg:hover {
+  color: #db4444;
 }

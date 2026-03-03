@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.section1_cart {
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cart_container {
+  width: 1100px;
+}
+
+/* HEADER */
+.cart_header, .cart_row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 15px;
+  background: #f5f5f5;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.cart_row {
+  background: #fff;
+}
+
+/* PRODUCT */
+.product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product span {
+  cursor: pointer;
+}
+
+/* BUTTONS */
+.cart_actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.cart_actions button {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* BOTTOM */
+.cart_bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.coupon {
+  display: flex;
+  gap: 10px;
+}
+
+.coupon input {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.coupon button {
+  background: #db4444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+}
+
+.cart_total {
+  border: 1px solid #000;
+  padding: 20px;
+  width: 300px;
+}
+
+.cart_total button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #db4444;
+  color: #fff;
+  border: none;
+}
