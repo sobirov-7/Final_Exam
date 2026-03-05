@@ -1,0 +1,218 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.section1_checkout {
+  padding: 60px 80px;
+  background: #fff;
+  font-family: sans-serif;
+}
+
+.checkout_container {
+  display: flex;
+  gap: 80px;
+}
+
+/* LEFT */
+.billing {
+  flex: 1;
+}
+
+.billing h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.billing input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+/* RIGHT */
+/* .order {
+  width: 400px;
+}
+
+.product {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.product .info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.img_box {
+  width: 40px;
+  height: 40px;
+  background: #ddd;
+  border-radius: 4px;
+} */
+
+/* SUMMARY */
+.summary {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.total {
+  font-weight: bold;
+}
+
+/* PAYMENT */
+.payment {
+  margin: 20px 0;
+}
+
+.payment label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* COUPON */
+.coupon {
+  display: flex;
+  gap: 10px;
+}
+
+.coupon input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.coupon button {
+  background: #db4444;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* ORDER BUTTON */
+.order_btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #db4444;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+/* Media query: tablets and smaller (768px and below) */
+@media (max-width: 768px) {
+
+  .section1_checkout {
+    padding: 40px 20px;
+  }
+
+  .checkout_container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Billing form */
+  .billing {
+    width: 100%;
+  }
+
+  .billing h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .billing input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+
+  .checkbox {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  /* Summary and Payment */
+  .summary {
+    padding-top: 10px;
+  }
+
+  .summary div {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 8px 0;
+  }
+
+  .summary .total {
+    font-size: 18px;
+  }
+
+  .payment label {
+    font-size: 14px;
+  }
+
+  .coupon {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .coupon input,
+  .coupon button {
+    width: 100%;
+  }
+
+  .order_btn {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+/* Extra small screens / Mobile <480px */
+@media (max-width: 480px) {
+  .section1_checkout {
+    padding: 30px 15px;
+  }
+
+  .billing h2 {
+    font-size: 20px;
+  }
+
+  .billing input {
+    padding: 8px;
+  }
+
+  .summary .total {
+    font-size: 16px;
+  }
+
+  .order_btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

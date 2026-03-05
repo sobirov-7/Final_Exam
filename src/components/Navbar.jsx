@@ -14,12 +14,20 @@ import ProductDetails from '../components/ProductDetails.jsx'
 import { FaRegHeart } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoPersonOutline } from "react-icons/io5";
+import { useSelector } from 'react-redux'
+
 
 
 
 
 
 const Navbar = () => {
+
+	const cartItems = useSelector((state) => state.cart.cartItems);
+	const wishlist = useSelector((state) => state.cart.wishlist);
+
+
+
 	return (
 		<div className='Navbar'>
 			<div className="Nav_header">
@@ -44,8 +52,8 @@ const Navbar = () => {
 				</div>
 				<div className="search">
 					<input type="text" placeholder='What are you looking for?'/>
-					<span><Link to={"/wishlist"}><FaRegHeart/></Link></span>
-					<span><Link to={'/cart'}><FiShoppingCart/></Link></span>
+					<span><Link to={"/wishlist"}><FaRegHeart/></Link><span className='leng2'>{wishlist.length}</span></span>
+					<span><Link to={'/cart'}><FiShoppingCart/></Link><span className='leng1'>{cartItems.length}</span></span>
 					<span><Link to={'/sign'}><IoPersonOutline/></Link></span>
 				</div>
 			</nav>

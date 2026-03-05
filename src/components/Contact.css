@@ -98,3 +98,80 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* Media query: tablets and smaller (768px and below) */
+@media (max-width: 768px) {
+
+  .section4_contact {
+    padding: 40px 20px;
+  }
+
+  .contact_container {
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+  }
+
+  /* LEFT CONTACT INFO */
+  .contact_left {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .contact_box {
+    text-align: center;
+  }
+
+  .contact_box .icon {
+    margin: 0 auto 10px;
+  }
+
+  .contact_box h4 {
+    font-size: 16px;
+  }
+
+  .contact_box p,
+  .contact_box span {
+    font-size: 14px;
+  }
+
+  /* RIGHT CONTACT FORM */
+  .contact_right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .input_row {
+    flex-direction: column;
+  }
+
+  .input_row input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    height: 120px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* Extra small screens / Mobile <480px */
+@media (max-width: 480px) {
+  .contact_box h4 {
+    font-size: 14px;
+  }
+
+  .contact_box p,
+  .contact_box span {
+    font-size: 12px;
+  }
+
+  textarea {
+    height: 100px;
+  }
+}

@@ -85,3 +85,73 @@
   color: #555;
   cursor: pointer;
 }
+/* Media query: tablets and smaller (768px and below) */
+@media (max-width: 768px) {
+  #Sign {
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .imgbox {
+    width: 100%;
+    height: 250px;
+  }
+
+  .imgbox img {
+    height: 100%;
+  }
+
+  .signbox {
+    width: 100%;
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .signbox h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .signbox p {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .signbox input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .signbox button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .signbox small {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+/* Extra small screens / Mobile <480px */
+@media (max-width: 480px) {
+  .signbox h2 {
+    font-size: 22px;
+  }
+
+  .signbox p {
+    font-size: 12px;
+  }
+
+  .signbox input,
+  .signbox button {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
