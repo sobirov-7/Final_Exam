@@ -3,6 +3,7 @@ import { FaStar, FaRegHeart } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, addToWishlist } from "../redux/cartSlice";
+import { useTranslation } from "react-i18next";
 import './ProductDetails.css'
 
 import img5 from '../assets/614.svg'
@@ -20,7 +21,7 @@ const products = [
     img: img6,
     rating: 5,
     reviews: 150,
-    description: "Playstation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mass free removal. Pressure sensitive."
+    descriptionKey: "product1Desc"
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ const products = [
     img: img7,
     rating: 4,
     reviews: 75,
+    descriptionKey: "product2Desc"
   },
   {
     id: 3,
@@ -41,6 +43,7 @@ const products = [
     img: img8,
     rating: 5,
     reviews: 99,
+    descriptionKey: "product3Desc"
   },
   {
     id: 4,
@@ -51,10 +54,12 @@ const products = [
     img: img5,
     rating: 5,
     reviews: 99,
+    descriptionKey: "product4Desc"
   },
 ];
 
 const ProductDetails = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const productId = Number(id);
   const product = products.find(p => p.id === productId) || products[0];
@@ -85,16 +90,12 @@ const ProductDetails = () => {
   return (
     <div className="product-details-container">
       <div className="breadcrumbs">
-        Account / Gaming / <strong>{product.name}</strong>
+        {t("account")} / {t("gaming")} / <strong>{product.name}</strong>
       </div>
 
-      {/* Asosiy wrapper: rasmlar + info yonma-yon */}
-      <div className="product-wrapper" style={{ display: "flex", gap: "40px", flexWrap: "wrap", justifyContent: "center" }}>
-        
-        {/* Rasmlar bo‘limi */}
-        <div className="product-images" style={{ display: "flex", gap: "20px" }}>
-          {/* Yon panelda kichik rasmlar */}
-          <div className="thumbnail-list" style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+      <div className="product-wrapper">
+        <div className="product-images">
+          <div className="thumbnail-list">
             {[1, 2, 3].map((n) => (
               <img
                 key={n}
@@ -104,50 +105,44 @@ const ProductDetails = () => {
               />
             ))}
           </div>
-          
-          {/* O‘rta katta asosiy rasm */}
           <img src={product.img} alt={product.name} className="main-img" />
         </div>
 
-        {/* Mahsulot ma'lumotlari */}
-        <div className="product-info" style={{ maxWidth: "500px", display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div className="product-info">
           <h2>{product.name}</h2>
 
-          <div className="rating-stock" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div className="rating-stock">
             {[...Array(5)].map((_, i) => (
-              <FaStar
-                key={i}
-                className={i < product.rating ? "star active" : "star"}
-              />
+              <FaStar key={i} className={i < product.rating ? "star active" : "star"} />
             ))}
-            <span>({product.reviews} Reviews)</span>
-            <span className="in-stock"> | In Stock</span>
+            <span>({product.reviews} {t("reviews")})</span>
+            <span className="in-stock"> | {t("inStock")}</span>
           </div>
 
-          <div className="price" style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+          <div className="price">
             ${product.price.toFixed(2)}
             {product.oldPrice > 0 && <span className="old-price">${product.oldPrice.toFixed(2)}</span>}
           </div>
 
-          <p className="description">{product.description}</p>
+          <p className="description">{t(product.descriptionKey)}</p>
 
-          <div className="colors-section" style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <span>Colours:</span>
-            <div className="colors-list" style={{ display: "flex", gap: "10px" }}>
+          <div className="colors-section">
+            <span>{t("colors")}:</span>
+            <div className="colors-list">
               {colors.map((c) => (
                 <span
                   key={c.id}
                   className={`color-circle ${selectedColor === c.color ? "selected" : ""}`}
-                  style={{ backgroundColor: c.color, width: "30px", height: "30px", borderRadius: "50%", cursor: "pointer" }}
+                  style={{ backgroundColor: c.color }}
                   onClick={() => setSelectedColor(c.color)}
                 />
               ))}
             </div>
           </div>
 
-          <div className="sizes-section" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span>Size:</span>
-            <div className="sizes-list" style={{ display: "flex", gap: "10px" }}>
+          <div className="sizes-section">
+            <span>{t("size")}:</span>
+            <div className="sizes-list">
               {sizes.map((size) => (
                 <button
                   key={size}
@@ -160,15 +155,15 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="purchase-section" style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-            <div className="quantity-selector" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div className="purchase-section">
+            <div className="quantity-selector">
               <button onClick={() => setQuantity(q => (q > 1 ? q - 1 : 1))}>-</button>
               <span>{quantity}</span>
               <button onClick={() => setQuantity(q => q + 1)}>+</button>
             </div>
 
             <button className="buy-now-btn" onClick={handleAddToCart}>
-              Buy Now
+              {t("buyNow")}
             </button>
 
             <button className="wishlist-btn" onClick={handleAddToWish}>
@@ -176,9 +171,9 @@ const ProductDetails = () => {
             </button>
           </div>
 
-          <div className="delivery-info" style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-            <strong>Free Delivery</strong>
-            <p>Enter your postal code for Delivery Availability</p>
+          <div className="delivery-info">
+            <strong>{t("freeDelivery")}</strong>
+            <p>{t("enterPostal")}</p>
           </div>
         </div>
       </div>

@@ -1,69 +1,73 @@
 import React from 'react'
 import './Account.css'
+import { useTranslation } from 'react-i18next'
+
 const Account = () => {
+  const { t } = useTranslation()
+
   return (
     <div>
       <section className="section1_Acc">
-  <div className="acc_container">
+        <div className="acc_container">
 
-    <div className="acc_sidebar">
-      <p className="title">Manage My Account</p>
-      <ul>
-        <li className="active">My Profile</li>
-        <li>Address Book</li>
-        <li>My Payment Options</li>
-      </ul>
+          <div className="acc_sidebar">
+            <p className="title">{t("manageMyAccount")}</p>
+            <ul>
+              <li className="active">{t("myProfile")}</li>
+              <li>{t("addressBook")}</li>
+              <li>{t("myPaymentOptions")}</li>
+            </ul>
 
-      <p className="title">My Orders</p>
-      <ul>
-        <li>My Returns</li>
-        <li>My Cancellations</li>
-      </ul>
+            <p className="title">{t("myOrders")}</p>
+            <ul>
+              <li>{t("myReturns")}</li>
+              <li>{t("myCancellations")}</li>
+            </ul>
 
-      <p className="title">My WishList</p>
-    </div>
+            <p className="title">{t("myWishlist")}</p>
+          </div>
 
-    {/* RIGHT CONTENT */}
-    <div className="acc_content">
-      <h2>Edit Your Profile</h2>
+          {/* RIGHT CONTENT */}
+          <div className="acc_content">
+            <h2>{t("editYourProfile")}</h2>
 
-      <div className="form_grid">
-        <div>
-          <label>First Name</label>
-          <input type="text" placeholder="Md" />
+            <div className="form_grid">
+              <div>
+                <label>{t("firstName")}</label>
+                <input type="text" placeholder={t("firstNamePlaceholder")} />
+              </div>
+
+              <div>
+                <label>{t("lastName")}</label>
+                <input type="text" placeholder={t("lastNamePlaceholder")} />
+              </div>
+
+              <div>
+                <label>{t("email")}</label>
+                <input type="email" placeholder={t("emailPlaceholder")} />
+              </div>
+
+              <div>
+                <label>{t("address")}</label>
+                <input type="text" placeholder={t("addressPlaceholder")} />
+              </div>
+            </div>
+
+            <div className="password">
+              <label>{t("passwordChanges")}</label>
+              <input type="password" placeholder={t("currentPassword")} />
+              <input type="password" placeholder={t("newPassword")} />
+              <input type="password" placeholder={t("confirmNewPassword")} />
+            </div>
+
+            <div className="buttons">
+              <button className="cancel">{t("cancel")}</button>
+              <button className="save">{t("saveChanges")}</button>
+            </div>
+          </div>
+
         </div>
-
-        <div>
-          <label>Last Name</label>
-          <input type="text" placeholder="Rimel" />
-        </div>
-
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="rimel111@gmail.com" />
-        </div>
-
-        <div>
-          <label>Address</label>
-          <input type="text" placeholder="Kingston, 5236, United State" />
-        </div>
-      </div>
-
-      <div className="password">
-        <label>Password Changes</label>
-        <input type="password" placeholder="Current Password" />
-        <input type="password" placeholder="New Password" />
-        <input type="password" placeholder="Confirm New Password" />
-      </div>
-
-      <div className="buttons">
-        <button className="cancel">Cancel</button>
-        <button className="save">Save Changes</button>
-      </div>
-    </div>
-
-  </div>
-</section>
+      </section>
     </div>
   )
 }

@@ -3,8 +3,7 @@ import img1 from '../assets/Side Image.png'
 import './Sign.css'
 import { auth, provider } from '../firebase'
 import { signInWithPopup, signOut } from 'firebase/auth'
-
-
+import { useTranslation } from 'react-i18next'
 
 const loginWithGoogle = async () => {
   try{
@@ -20,26 +19,27 @@ const logout = async () => {
   console.log("Logged out");
 }
 
-
 const Sign = () => {
-	return (
-		<div id='Sign'>
-			<div className="imgbox">
-				<img src={img1} alt="" />
-			</div>
-			<div className="signbox">
-				<h2>Create an account</h2>
-				<p>Enter your details below</p>
+  const { t } = useTranslation();
 
-				<input type="text" placeholder='Name'/>
-				<input type="email" placeholder='Email or Phone Number'/>
-				<input type="password" placeholder='Password'/>
-				<button>Create Account</button>
-				<button onClick={loginWithGoogle}>Sign up with Google</button>
-				<small>Already have account?</small>
-			</div>
-		</div>
-	)
+  return (
+    <div id='Sign'>
+      <div className="imgbox">
+        <img src={img1} alt={t("createAccount")} />
+      </div>
+      <div className="signbox">
+        <h2>{t("createAccount")}</h2>
+        <p>{t("enterDetails")}</p>
+
+        <input type="text" placeholder={t("name")} />
+        <input type="email" placeholder={t("emailOrPhone")} />
+        <input type="password" placeholder={t("password")} />
+        <button>{t("createAccount")}</button>
+        <button onClick={loginWithGoogle}>{t("signupGoogle")}</button>
+        <small>{t("alreadyAccount")}</small>
+      </div>
+    </div>
+  )
 }
 
-export default Sign
+export default Sign;

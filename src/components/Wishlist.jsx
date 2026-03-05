@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Wishlist.css";
 import { removeFromWish } from '../redux/cartSlice';
+import { useTranslation } from "react-i18next";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.cart.wishlist);
+  const { t } = useTranslation();
 
   return (
     <section className="section1_wishlist">
@@ -12,13 +14,13 @@ const Wishlist = () => {
 
         <div className="wishlist_table">
           <div className="wishlist_header">
-            <p>Product</p>
-            <p>Price</p>
-            <p>Actions</p>
+            <p>{t("product")}</p>
+            <p>{t("price")}</p>
+            <p>{t("actions")}</p>
           </div>
 
           {wishlist.length === 0 ? (
-            <p style={{ padding: "20px" }}>Your wishlist is empty</p>
+            <p style={{ padding: "20px" }}>{t("wishlistEmpty")}</p>
           ) : (
             wishlist.map((item) => (
               <div className="wishlist_row" key={item.id}>
@@ -36,11 +38,7 @@ const Wishlist = () => {
                 <p>${item.price}</p>
 
                 <div className="wishlist_actions">
-                  {/* <button
-                    onClick={() => console.log("Move to cart:", item.id)}
-                  >
-                    Move to Cart
-                  </button> */}
+                  {/* Move to Cart button can be added here if needed */}
                 </div>
               </div>
             ))

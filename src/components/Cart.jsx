@@ -2,29 +2,30 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { changeQuantity, removeFromCart } from "../redux/cartSlice"
 import "./Cart.css"
+import { useTranslation } from "react-i18next"
 
 const Cart = () => {
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cartItems);
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
+  const cart = useSelector((state) => state.cart.cartItems)
 
-  const [coupon, setCoupon] = useState("");
-  const [discount, setDiscount] = useState(0);
+  const [coupon, setCoupon] = useState("")
+  const [discount, setDiscount] = useState(0)
 
   const subtotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
-  );
-
+  )
 
   const applyCoupon = () => {
     if (coupon === "SALE10") {
-      setDiscount(subtotal * 0.1);
+      setDiscount(subtotal * 0.1)
     } else {
-      setDiscount(0);
+      setDiscount(0)
     }
-  };
+  }
 
-  const total = subtotal - discount;
+  const total = subtotal - discount
 
   return (
     <section className="section1_cart">
@@ -33,26 +34,19 @@ const Cart = () => {
         {/* TABLE */}
         <div className="cart_table">
           <div className="cart_header">
-            <p>Product</p>
-            <p>Price</p>
-            <p>Quantity</p>
-            <p>Subtotal</p>
+            <p>{t("product")}</p>
+            <p>{t("price")}</p>
+            <p>{t("quantity")}</p>
+            <p>{t("subtotal")}</p>
           </div>
 
           {cart.length === 0 ? (
-            <p style={{ padding: "20px" }}>Cart is empty</p>
+            <p style={{ padding: "20px" }}>{t("cartIsEmpty")}</p>
           ) : (
             cart.map((item) => (
               <div className="cart_row" key={item.id}>
                 <div className="product">
-                  <span
-                    onClick={() =>
-                      dispatch(removeFromCart(item.id))
-                    }
-                  >
-                    ❌
-                  </span>
-
+                  <span onClick={() => dispatch(removeFromCart(item.id))}>❌</span>
                   <img src={item.img} alt={item.name} />
                   <p>{item.name}</p>
                 </div>
@@ -85,8 +79,8 @@ const Cart = () => {
 
         {/* BUTTONS */}
         <div className="cart_actions">
-          <button>Return To Shop</button>
-          <button>Update Cart</button>
+          <button>{t("returnToShop")}</button>
+          <button>{t("updateCart")}</button>
         </div>
 
         {/* BOTTOM */}
@@ -95,20 +89,20 @@ const Cart = () => {
           <div className="coupon">
             <input
               type="text"
-              placeholder="Coupon Code"
+              placeholder={t("couponCode")}
               value={coupon}
               onChange={(e) => setCoupon(e.target.value)}
             />
-            <button onClick={applyCoupon}>Apply</button>
+            <button onClick={applyCoupon}>{t("apply")}</button>
           </div>
 
           <div className="cart_total">
-            <h3>Cart Total</h3>
-            <p>Subtotal: ${subtotal}</p>
-            <p>Shipping: Free</p>
-            <p>Total: ${total}</p>
+            <h3>{t("cartTotal")}</h3>
+            <p>{t("subtotalAmount", { subtotal })}</p>
+            <p>{t("shipping")}</p>
+            <p>{t("totalAmount", { total })}</p>
             <button disabled={cart.length === 0}>
-              Proceed to checkout
+              {t("proceedToCheckout")}
             </button>
           </div>
 
@@ -116,7 +110,7 @@ const Cart = () => {
 
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

@@ -1,25 +1,28 @@
 import React from "react";
 import "./Checkout.css";
+import { useTranslation } from "react-i18next";
 
 const Checkout = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="section1_checkout">
       <div className="checkout_container">
 
         <div className="billing">
-          <h2>Billing Details</h2>
+          <h2>{t("billingDetails")}</h2>
 
-          <input type="text" placeholder="First Name*" />
-          <input type="text" placeholder="Company Name" />
-          <input type="text" placeholder="Street Address*" />
-          <input type="text" placeholder="Apartment, floor, etc. (optional)" />
-          <input type="text" placeholder="Town/City*" />
-          <input type="text" placeholder="Phone Number*" />
-          <input type="email" placeholder="Email Address*" />
+          <input type="text" placeholder={t("firstName")} />
+          <input type="text" placeholder={t("companyName")} />
+          <input type="text" placeholder={t("streetAddress")} />
+          <input type="text" placeholder={t("apartmentOptional")} />
+          <input type="text" placeholder={t("townCity")} />
+          <input type="text" placeholder={t("phoneNumber")} />
+          <input type="email" placeholder={t("emailAddress")} />
 
           <label className="checkbox">
             <input type="checkbox" />
-            Save this information for faster check-out next time
+            {t("saveInfo")}
           </label>
         </div>
 
@@ -27,15 +30,15 @@ const Checkout = () => {
 
           <div className="summary">
             <div>
-              <p>Subtotal:</p>
+              <p>{t("subtotal")}:</p>
               <span>$1750</span>
             </div>
             <div>
-              <p>Shipping:</p>
-              <span>Free</span>
+              <p>{t("shipping")}:</p>
+              <span>{t("free")}</span>
             </div>
             <div className="total">
-              <p>Total:</p>
+              <p>{t("total")}:</p>
               <span>$1750</span>
             </div>
           </div>
@@ -43,21 +46,21 @@ const Checkout = () => {
           <div className="payment">
             <label>
               <input type="radio" name="pay" />
-              Bank
+              {t("bank")}
             </label>
             <label>
               <input type="radio" name="pay" defaultChecked />
-              Cash on delivery
+              {t("cashOnDelivery")}
             </label>
           </div>
 
           <div className="coupon">
-            <input type="text" placeholder="Coupon Code" />
-            <button type="button">Apply Coupon</button>
+            <input type="text" placeholder={t("couponCode")} />
+            <button type="button">{t("applyCoupon")}</button>
           </div>
 
           <button className="order_btn" type="button">
-            Place Order
+            {t("placeOrder")}
           </button>
 
         </div>

@@ -5,6 +5,8 @@ import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import i18n from './i18n.js'
+
 
 const container = document.getElementById("root");
 const root = createRoot(container);

@@ -105,8 +105,16 @@ ul a{
 	background-color: #dadada;
 	padding: 10px 30px;
 }
+a{
+  text-decoration: none;
+  color: black;
+}
 /* Media query: tablets and smaller (768px and below) */
 @media (max-width: 768px) {
+
+  body {
+  padding-top: calc(12px + 21px + 300px + 30px); /* Nav_header balandligi taxminiy */
+}
 
   /* Nav header */
   .Nav_header {

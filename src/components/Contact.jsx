@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import './Contact.css'
+import './Contact.css';
+import { useTranslation } from 'react-i18next';
+
 const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
-                    <section className="section4_contact">
+      <section className="section4_contact">
         <div className="contact_container">
 
           {/* LEFT SIDE */}
@@ -12,25 +16,23 @@ const Contact = () => {
 
             <div className="contact_box">
               <div className="icon">
-                {/* PHONE ICON */}
                 <FaPhoneAlt/>
               </div>
-              <h4>Call To Us</h4>
-              <p>We are available 24/7, 7 days a week.</p>
-              <span>Phone: +8801611112222</span>
+              <h4>{t("callToUs")}</h4>
+              <p>{t("available247")}</p>
+              <span>{t("phone")}: +8801611112222</span>
             </div>
 
             <hr />
 
             <div className="contact_box">
               <div className="icon">
-                {/* MAIL ICON */}
                 <FaEnvelope/>
               </div>
-              <h4>Write To US</h4>
-              <p>Fill out our form and we will contact you within 24 hours.</p>
-              <span>Emails: customer@exclusive.com</span>
-              <span>Emails: support@exclusive.com</span>
+              <h4>{t("writeToUs")}</h4>
+              <p>{t("contactFormInfo")}</p>
+              <span>{t("emails")}: customer@exclusive.com</span>
+              <span>{t("emails")}: support@exclusive.com</span>
             </div>
 
           </div>
@@ -38,14 +40,14 @@ const Contact = () => {
           <div className="contact_right">
 
             <div className="input_row">
-              <input type="text" placeholder="Your Name *" />
-              <input type="email" placeholder="Your Email *" />
-              <input type="text" placeholder="Your Phone *" />
+              <input type="text" placeholder={t("yourName")} />
+              <input type="email" placeholder={t("yourEmail")} />
+              <input type="text" placeholder={t("yourPhone")} />
             </div>
 
-            <textarea placeholder="Your Message"></textarea>
+            <textarea placeholder={t("yourMessage")}></textarea>
 
-            <button>Send Message</button>
+            <button>{t("sendMessage")}</button>
 
           </div>
 
@@ -55,4 +57,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Contact;

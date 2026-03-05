@@ -1,470 +1,291 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Home.css";
-import { FaStar, FaRegHeart, FaEye } from "react-icons/fa";
-import img5 from '../assets/614.svg'
-import img6 from '../assets/611.svg'
-import img7 from '../assets/612.svg'
-import img8 from '../assets/comp.svg'
-import img2 from './../assets/14max.svg'
-import img10 from '../assets/jbj.svg'
-import img11 from './../assets/dog.svg'
-import img12 from '../assets/camera.svg'
-import img13 from '../assets/komp.svg'
-import img14 from '../assets/dog.svg'
-import img15 from '../assets/mers.svg'
-import img16 from '../assets/butsa.svg'
-import img17 from '../assets/joystik.svg'
-import img18 from '../assets/vitrovka.svg'
+import { FaStar, FaRegHeart, FaEye, FaMobileAlt, FaDesktop, FaCamera, FaHeadphones, FaGamepad } from "react-icons/fa";
 import { BsSmartwatch } from "react-icons/bs";
 import { useDispatch } from "react-redux"; 
 import { addToCart, addToWishlist } from "../redux/cartSlice"; 
-import {
-  FaMobileAlt,
-  FaDesktop,
-  FaCamera,
-  FaHeadphones,
-  FaGamepad,
-} from "react-icons/fa";
-import { IoWatchOutline } from "react-icons/io5";
-import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi";
-import { useNavigate } from 'react-router-dom'
-// import Card from "./Cards";
-const products = [
-  {
-    id: 1,
-    name: "HAVIT HV-G92 Gamepad",
-    price: 120,
-    oldPrice: 160,
-    discount: "-40%",
-    img: img6,
-    rating: 5,
-    reviews: 88,
-  },
-  {
-    id: 2,
-    name: "AK-900 Wired Keyboard",
-    price: 960,
-    oldPrice: 1160,
-    discount: "-35%",
-    img: img7,
-    rating: 4,
-    reviews: 75,
-  },
-  {
-    id: 3,
-    name: "IPS LCD Gaming Monitor",
-    price: 370,
-    oldPrice: 400,
-    discount: "-30%",
-    img: img8,
-    rating: 5,
-    reviews: 99,
-  },
-  {
-    id: 4,
-    name: "S-Series Comfort Chair",
-    price: 375,
-    oldPrice: 400,
-    discount: "-25%",
-    img: img5,
-    rating: 5,
-    reviews: 99,
-  },
-  {
-    id: 5,
-    name: "AK-900 Wired Keyboard",
-    price: 960,
-    oldPrice: 1160,
-    discount: "-35%",
-    img: img7,
-    rating: 4,
-    reviews: 75,
-  },
+import { useNavigate } from 'react-router-dom';
+import img2 from '../assets/14max.svg';
+import img5 from '../assets/614.svg';
+import img6 from '../assets/611.svg';
+import img7 from '../assets/612.svg';
+import img8 from '../assets/comp.svg';
+import img10 from '../assets/jbj.svg';
+import img11 from '../assets/dog.svg';
+import img12 from '../assets/camera.svg';
+import img13 from '../assets/komp.svg';
+import img14 from '../assets/dog.svg';
+import img15 from '../assets/mers.svg';
+import img16 from '../assets/butsa.svg';
+import img17 from '../assets/joystik.svg';
+import img18 from '../assets/vitrovka.svg';
+import { useTranslation } from 'react-i18next'
 
+const products = [
+  { id: 1, name: "HAVIT HV-G92 Gamepad", price: 120, oldPrice: 160, discount: "-40%", img: img6, rating: 5, reviews: 88 },
+  { id: 2, name: "AK-900 Wired Keyboard", price: 960, oldPrice: 1160, discount: "-35%", img: img7, rating: 4, reviews: 75 },
+  { id: 3, name: "IPS LCD Gaming Monitor", price: 370, oldPrice: 400, discount: "-30%", img: img8, rating: 5, reviews: 99 },
+  { id: 4, name: "S-Series Comfort Chair", price: 375, oldPrice: 400, discount: "-25%", img: img5, rating: 5, reviews: 99 },
+  { id: 5, name: "AK-900 Wired Keyboard", price: 960, oldPrice: 1160, discount: "-35%", img: img7, rating: 4, reviews: 75 },
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-    let navigate = useNavigate()
-		const dispatch = useDispatch();
-
-const handleAddToCart = (item) => {
-  dispatch(addToCart(item));  
-};
-const handleAddToWish = (item) => {
-  dispatch(addToWishlist(item));  
-};
+  const handleAddToCart = (item) => dispatch(addToCart(item));
+  const handleAddToWish = (item) => dispatch(addToWishlist(item));
 
   return (
     <>
+      {/* SECTION 2 */}
       <section className="section2">
         <div className="section2_container">
-
           <div className="section2_left">
             <ul>
-              <li>Woman’s Fashion</li>
-              <li>Men’s Fashion</li>
-              <li>Electronics</li>
-              <li>Home & Lifestyle</li>
-              <li>Medicine</li>
-              <li>Sports & Outdoor</li>
-              <li>Baby’s & Toys</li>
-              <li>Groceries & Pets</li>
-              <li>Health & Beauty</li>
+              <li>{t("womensFashion")}</li>
+              <li>{t("mensFashion")}</li>
+              <li>{t("electronics")}</li>
+              <li>{t("homeLifestyle")}</li>
+              <li>{t("medicine")}</li>
+              <li>{t("sportsOutdoor")}</li>
+              <li>{t("babysToys")}</li>
+              <li>{t("groceriesPets")}</li>
+              <li>{t("healthBeauty")}</li>
             </ul>
           </div>
 
           <div className="section2_right">
             <div className="section2_banner">
-
               <div className="section2_text">
-                <p className="section2_brand">iPhone 14 Series</p>
-                <h1>Up to 10% off Voucher</h1>
-                <button>Shop Now →</button>
+                <p className="section2_brand">{t("iphoneSeries")}</p>
+                <h1>{t("voucherDiscount")}</h1>
+                <button>{t("shopNow")} →</button>
               </div>
-
               <div className="section2_img">
-                <img src={img2} alt="" />
+                <img src={img2} alt="Banner" />
               </div>
-
             </div>
-
             <div className="section2_dots">
-              <span></span>
-              <span></span>
-              <span className="active"></span>
-              <span></span>
-              <span></span>
+              <span></span><span></span><span className="active"></span><span></span><span></span>
             </div>
           </div>
-
-        </div>
-      </section>,
-
-      <section className="section3">
-        <div className="section3_top">
-          <span className="today">Today’s</span>
-          <h2>Flash Sales</h2>
-        </div>
-
-        <div className="section3_cards">
-  {products.map((item) => (
-    <div className="card" key={item.id}>
-      
-      <div className="img_box">
-        {item.discount && <span className="discount">{item.discount}</span>}
-
-        <div className="icons">
-          <FaRegHeart onClick={() => handleAddToWish(item) } />
-          <FaEye onClick={()=> navigate(`/cart/${item.id}`)}/>
-        </div>
-
-        <img src={item.img} alt={item.name} />
-
-        <button className="add_cart" onClick={() => handleAddToCart(item)}>
-          Add To Cart
-        </button>
-      </div>
-
-      <h3>{item.name}</h3>
-
-      <div className="price">
-        <span className="new">${item.price}</span>
-        {item.oldPrice && <span className="old">${item.oldPrice}</span>}
-      </div>
-
-      {item.rating && (
-        <div className="rating">
-          {[...Array(5)].map((_, i) => (
-            <FaStar
-              key={i}
-              className={i < item.rating ? "star active" : "star"}
-            />
-          ))}
-          <span>({item.reviews})</span>
-        </div>
-      )}
-
-    </div>
-  ))}
-</div>
-
-        <div className="btn_box">
-          <button>View All Products</button>
         </div>
       </section>
 
-
-            <section className="section5">
-  <div className="section5-header">
-    <div>
-      <span className="section5-label">Categories</span>
-      <h2>Browse By Category</h2>
-    </div>
-
-    <div className="section5-arrows">
-      <button className="arrow-btn">←</button>
-      <button className="arrow-btn">→</button>
-    </div>
-  </div>
-
-  <div className="section5-categories">
-    <div className="category-card">
-      <i className="fa-solid fa-mobile-screen"><FaMobileAlt/></i>
-      <p>Phones</p>
-    </div>
-
-    <div className="category-card">
-      <i className="fa-solid fa-desktop"><FaDesktop/></i>
-      <p>Computers</p>
-    </div>
-
-    <div className="category-card">
-      <i className="fa-solid fa-clock"><BsSmartwatch/></i>
-      <p>SmartWatch</p>
-    </div>
-
-    <div className="category-card">
-      <i className="fa-solid fa-camera"><FaCamera/></i>
-      <p>Camera</p>
-    </div>
-
-    <div className="category-card">
-      <i className="fa-solid fa-headphones"><FaHeadphones/></i>
-      <p>HeadPhones</p>
-    </div>
-
-    <div className="category-card">
-      <i className="fa-solid fa-gamepad"><FaGamepad/></i>
-      <p>Gaming</p>
-    </div>
-  </div>
-</section>
-
-
-           <section className="section3">
-                <div className="section3_top">
-                  <span className="today">Today’s</span>
-                  <h2>Flash Sales</h2>
-                </div>
-        
-                <div className="section3_cards">
-                  {products.map((item) => (
-                    <div className="card" key={item.id}>
-        
-                      <div className="img_box">
-                        <span className="discount">{item.discount}</span>
-        
-                        <div className="icons">
-          <FaRegHeart onClick={() => handleAddToWish(item) } />
-          <FaEye onClick={()=> navigate(`/cart/${item.id}`)}/>
+      {/* SECTION 3 - Flash Sales */}
+      <section className="section3">
+        <div className="section3_top">
+          <span className="today">{t("todays")}</span>
+          <h2>{t("flashSales")}</h2>
         </div>
 
-        <img src={item.img} alt={item.name} />
-
-        <button className="add_cart" onClick={() => handleAddToCart(item)}>
-          Add To Cart
-        </button>
-      </div>
-        
-                      <h3>{item.name}</h3>
-        
-                      <div className="price">
-                        <span className="new">${item.price}</span>
-                        <span className="old">${item.oldPrice}</span>
-                      </div>
-        
-                      <div className="rating">
-                        {[...Array(5)].map((_, i) => (
-                          <FaStar
-                            key={i}
-                            className={i < item.rating ? "star active" : "star"}
-                          />
-                        ))}
-                        <span>({item.reviews})</span>
-                      </div>
-        
-                    </div>
+        <div className="section3_cards">
+          {products.map(item => (
+            <div className="card" key={item.id}>
+              <div className="img_box">
+                {item.discount && <span className="discount">{item.discount}</span>}
+                <div className="icons">
+                  <FaRegHeart onClick={() => handleAddToWish(item)} />
+                  <FaEye onClick={() => navigate(`/cart/${item.id}`)} />
+                </div>
+                <img src={item.img} alt={item.name} />
+                <button className="add_cart" onClick={() => handleAddToCart(item)}>{t("addToCart")}</button>
+              </div>
+              <h3>{item.name}</h3>
+              <div className="price">
+                <span className="new">${item.price}</span>
+                {item.oldPrice && <span className="old">${item.oldPrice}</span>}
+              </div>
+              {item.rating && (
+                <div className="rating">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className={i < item.rating ? "star active" : "star"} />
                   ))}
+                  <span>({item.reviews})</span>
                 </div>
-        
-                <div className="btn_box">
-                  <button>View All Products</button>
-                </div>
-              </section>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="btn_box">
+          <button>{t("viewAllProducts")}</button>
+        </div>
+      </section>
 
-                    <section className="section4">
+      {/* SECTION 5 - Categories */}
+      <section className="section5">
+        <div className="section5-header">
+          <div>
+            <span className="section5-label">{t("categories")}</span>
+            <h2>{t("browseByCategory")}</h2>
+          </div>
+          <div className="section5-arrows">
+            <button className="arrow-btn">←</button>
+            <button className="arrow-btn">→</button>
+          </div>
+        </div>
+        <div className="section5-categories">
+          <div className="category-card"><FaMobileAlt /><p>{t("phones")}</p></div>
+          <div className="category-card"><FaDesktop /><p>{t("computers")}</p></div>
+          <div className="category-card"><BsSmartwatch /><p>{t("smartwatch")}</p></div>
+          <div className="category-card"><FaCamera /><p>{t("camera")}</p></div>
+          <div className="category-card"><FaHeadphones /><p>{t("headphones")}</p></div>
+          <div className="category-card"><FaGamepad /><p>{t("gaming")}</p></div>
+        </div>
+      </section>
+
+      <section className="section3">
+        <div className="section3_top">
+          <span className="today">{t("todays")}</span>
+          <h2>{t("flashSales")}</h2>
+        </div>
+
+        <div className="section3_cards">
+          {products.map(item => (
+            <div className="card" key={item.id}>
+              <div className="img_box">
+                {item.discount && <span className="discount">{item.discount}</span>}
+                <div className="icons">
+                  <FaRegHeart onClick={() => handleAddToWish(item)} />
+                  <FaEye onClick={() => navigate(`/cart/${item.id}`)} />
+                </div>
+                <img src={item.img} alt={item.name} />
+                <button className="add_cart" onClick={() => handleAddToCart(item)}>{t("addToCart")}</button>
+              </div>
+              <h3>{item.name}</h3>
+              <div className="price">
+                <span className="new">${item.price}</span>
+                {item.oldPrice && <span className="old">${item.oldPrice}</span>}
+              </div>
+              {item.rating && (
+                <div className="rating">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className={i < item.rating ? "star active" : "star"} />
+                  ))}
+                  <span>({item.reviews})</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="btn_box">
+          <button>{t("viewAllProducts")}</button>
+        </div>
+      </section>
+
+      {/* SECTION 4 - Music Promo */}
+      <section className="section4">
         <div className="section4_container">
-          
           <div className="section4_left">
-            <p className="section4_category">Categories</p>
-            
-            <h1 className="section4_title">
-              Enhance Your <br /> Music Experience
-            </h1>
-
+            <p className="section4_category">{t("categories")}</p>
+            <h1 className="section4_title">{t("enhanceMusic")}</h1>
             <div className="section4_timer">
-              <div><span>23</span><p>Hours</p></div>
-              <div><span>05</span><p>Days</p></div>
-              <div><span>59</span><p>Minutes</p></div>
-              <div><span>35</span><p>Seconds</p></div>
+              <div><span>23</span><p>{t("hours")}</p></div>
+              <div><span>05</span><p>{t("days")}</p></div>
+              <div><span>59</span><p>{t("minutes")}</p></div>
+              <div><span>35</span><p>{t("seconds")}</p></div>
             </div>
-
-            <button className="section4_btn">Buy Now!</button>
+            <button className="section4_btn">{t("buyNow")}</button>
           </div>
-
-            <div className="section4_right">
-            <img src={img10} alt="" />
-         </div>
-
-        </div>
-      </section> 
-
-          <section className="section5">
-      <div className="section5_container"><div className="section5_header">
-          <p className="section5_subtitle">Our Products</p>
-          <h2 className="section5_title">Explore Our Products</h2>
-
-          <div className="section5_arrows">
-            <button>{"<"}</button>
-            <button>{">"}</button>
+          <div className="section4_right">
+            <img src={img10} alt="Music" />
           </div>
         </div>
+      </section>
 
-        <div className="section5_grid">
-
-          <div className="section5_card">
-            <div className="section5_img">
-              <img src={img11} alt="" />
+      {/* SECTION 5 - Products */}
+      <section className="section5">
+        <div className="section5_container">
+          <div className="section5_header">
+            <p className="section5_subtitle">{t("ourProducts")}</p>
+            <h2 className="section5_title">{t("exploreProducts")}</h2>
+            <div className="section5_arrows">
+              <button>{"<"}</button>
+              <button>{">"}</button>
             </div>
-            <h3>Breed Dry Dog Food</h3>
-            <p className="price">$100</p>
           </div>
 
-          <div className="section5_card">
-            <div className="section5_img">
-              <img src={img12} alt="" />
-            </div>
-            <h3>CANON EOS DSLR Camera</h3>
-            <p className="price">$360</p>
+          <div className="section5_grid">
+            <div className="section5_card"><div className="section5_img"><img src={img11} alt="Dog Food" /></div><h3>{t("breedDryDogFood")}</h3><p className="price">$100</p></div>
+            <div className="section5_card"><div className="section5_img"><img src={img12} alt="Camera" /></div><h3>{t("canonCamera")}</h3><p className="price">$360</p></div>
+            <div className="section5_card"><div className="section5_img"><img src={img13} alt="Laptop" /></div><h3>{t("asusLaptop")}</h3><p className="price">$700</p></div>
+            <div className="section5_card"><div className="section5_img"><img src={img14} alt="Curology Set" /></div><h3>{t("curologySet")}</h3><p className="price">$500</p></div>
+            <div className="section5_card"><div className="section5_img"><span className="badge">{t("new")}</span><img src={img15} alt="Kids Car" /></div><h3>{t("kidsElectricCar")}</h3><p className="price">$960</p></div>
+            <div className="section5_card"><div className="section5_img"><img src={img16} alt="Soccer Cleats" /></div><h3>{t("jrZoomCleats")}</h3><p className="price">$1160</p></div>
+            <div className="section5_card"><div className="section5_img"><span className="badge">{t("new")}</span><img src={img17} alt="Gamepad" /></div><h3>{t("gp11Gamepad")}</h3><p className="price">$660</p></div>
+            <div className="section5_card"><div className="section5_img"><img src={img18} alt="Jacket" /></div><h3>{t("quiltedJacket")}</h3><p className="price">$660</p></div>
           </div>
 
-          <div className="section5_card">
-            <div className="section5_img">
-              <img src={img13} alt="" />
-            </div>
-            <h3>ASUS FHD Gaming Laptop</h3>
-            <p className="price">$700</p>
+          <div className="section5_btn_wrap">
+            <button className="section5_btn">{t("viewAllProducts")}</button>
           </div>
-
-          <div className="section5_card">
-            <div className="section5_img">
-              <img src={img14} alt="" />
-            </div>
-            <h3>Curology Product Set</h3>
-            <p className="price">$500</p>
-          </div>
-
-          <div className="section5_card">
-            <div className="section5_img">
-              <span className="badge">NEW</span>
-              <img src={img15} alt="" />
-            </div>
-            <h3>Kids Electric Car</h3>
-            <p className="price">$960</p>
-          </div>
-
-          <div className="section5_card">
-            <div className="section5_img">
-              <img src={img16} alt="" />
-            </div>
-            <h3>Jr. Zoom Soccer Cleats</h3>
-            <p className="price">$1160</p>
-          </div>
-
-          <div className="section5_card">
-            <div className="section5_img">
-              <span className="badge">NEW</span>
-              <img src={img17} alt="" />
-            </div>
-            <h3>GP11 Shooter USB Gamepad</h3>
-            <p className="price">$660</p>
-          </div>
-
-          <div className="section5_card">
-            <div className="section5_img">
-              <img src={img18} alt="" />
-            </div>
-            <h3>Quilted Satin Jacket</h3>
-            <p className="price">$660</p>
-          </div>
-
         </div>
+      </section>
 
-        <div className="section5_btn_wrap">
-          <button className="section5_btn">View All Products</button>
+      {/* <section className="new-arrival">
+        <div className="section-header">
+          <span className="red-box"></span>
+          <span className="section-subtitle">{t("featured")}</span>
         </div>
-
-      </div>
-</section>
-<section className="new-arrival">
-          <div className="section-header">
-            <span className="red-box"></span>
-            <span className="section-subtitle">{t("featured")}</span>
+        <h2 className="section-title">{t("newArrival")}</h2>
+        <div className="arrival-grid">
+          <div className="arrival-big">
+            <img src="https://placehold.co/500x400?text=PS5" alt="PS5" />
+            <div className="arrival-overlay">
+              <h3>{t("ps5Title")}</h3>
+              <p>{t("ps5Desc")}</p>
+              <button>{t("shopNow")}</button>
+            </div>
           </div>
-          <h2 className="section-title">{t("newArrival")}</h2>
-          <div className="arrival-grid">
-            <div className="arrival-big">
-              <img src="https://placehold.co/500x400?text=PS5" alt="PS5" />
+          <div className="arrival-right">
+            <div className="arrival-card large">
+              <img src="https://placehold.co/400x200?text=Women" alt="Women" />
               <div className="arrival-overlay">
-                <h3>{t("ps5Title")}</h3>
-                <p>{t("ps5Desc")}</p>
+                <h3>{t("womenCollections")}</h3>
                 <button>{t("shopNow")}</button>
               </div>
             </div>
-            <div className="arrival-right">
-              <div className="arrival-card large">
-                <img src="https://placehold.co/400x200?text=Women" alt="Women" />
+            <div className="arrival-small-row">
+              <div className="arrival-card">
+                <img src="https://placehold.co/200x200?text=Speakers" alt="Speakers" />
                 <div className="arrival-overlay">
-                  <h3>{t("womenCollections")}</h3>
+                  <h3>{t("speakers")}</h3>
                   <button>{t("shopNow")}</button>
                 </div>
               </div>
-              <div className="arrival-small-row">
-                <div className="arrival-card">
-                  <img src="https://placehold.co/200x200?text=Speakers" alt="Speakers" />
-                  <div className="arrival-overlay"><h3>{t("speakers")}</h3><button>{t("shopNow")}</button></div>
-                </div>
-                <div className="arrival-card">
-                  <img src="https://placehold.co/200x200?text=Perfume" alt="Perfume" />
-                  <div className="arrival-overlay"><h3>{t("perfume")}</h3><button>{t("shopNow")}</button></div>
+              <div className="arrival-card">
+                <img src="https://placehold.co/200x200?text=Perfume" alt="Perfume" />
+                <div className="arrival-overlay">
+                  <h3>{t("perfume")}</h3>
+                  <button>{t("shopNow")}</button>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-
-        {/* SERVICES */}
-        <div className="services">
-          <div className="service-item">
-            <div className="service-icon">🚚</div>
-            <h4>{t("freeFastDelivery")}</h4>
-            <p>{t("freeFastDeliveryDesc")}</p>
-          </div>
-          <div className="service-item">
-            <div className="service-icon">🎧</div>
-            <h4>{t("customerService")}</h4>
-            <p>{t("customerServiceDesc")}</p>
-          </div>
-          <div className="service-item">
-            <div className="service-icon">✅</div>
-            <h4>{t("moneyBack")}</h4>
-            <p>{t("moneyBackDesc")}</p>
-          </div>
         </div>
-    </>
+      </section>
 
-  )
-}
+      <div className="services">
+        <div className="service-item">
+          <div className="service-icon">🚚</div>
+          <h4>{t("freeFastDelivery")}</h4>
+          <p>{t("freeFastDeliveryDesc")}</p>
+        </div>
+        <div className="service-item">
+          <div className="service-icon">🎧</div>
+          <h4>{t("customerService")}</h4>
+          <p>{t("customerServiceDesc")}</p>
+        </div>
+        <div className="service-item">
+          <div className="service-icon">✅</div>
+          <h4>{t("moneyBack")}</h4>
+          <p>{t("moneyBackDesc")}</p>
+        </div>
+      </div> */}
+    </>
+  );
+};
 
 export default Home;

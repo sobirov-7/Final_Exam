@@ -186,7 +186,77 @@
   gap: 5px;
   margin-top: 5px;
 }
+.new-arrival {
+  margin-top: 80px;
+}
 
+.arrival-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.arrival-big {
+  position: relative;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.arrival-big img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arrival-right {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.arrival-card {
+  position: relative;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.arrival-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arrival-card.large {
+  height: 190px;
+}
+
+.arrival-small-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.arrival-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+}
+
+.arrival-overlay h3 {
+  margin: 0 0 8px;
+}
+
+.arrival-overlay button {
+  background: transparent;
+  border: none;
+  color: white;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}
 .star {
   color: #ccc;
 }
@@ -483,77 +553,7 @@
   border-radius: 6px;
   cursor: pointer;
 }
-.new-arrival {
-  margin-top: 80px;
-}
 
-.arrival-grid {
-  display: grid;
-  grid-template-columns: 2fr 1.3fr;
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.arrival-big {
-  position: relative;
-  background: #000;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.arrival-big img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.arrival-right {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.arrival-card {
-  position: relative;
-  background: #000;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.arrival-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.arrival-card.large {
-  height: 190px;
-}
-
-.arrival-small-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-}
-
-.arrival-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-}
-
-.arrival-overlay h3 {
-  margin: 0 0 8px;
-}
-
-.arrival-overlay button {
-  background: transparent;
-  border: none;
-  color: white;
-  border-bottom: 1px solid white;
-  cursor: pointer;
-}
 @media (max-width: 1199px) {
   .section2_container {
     flex-direction: column;

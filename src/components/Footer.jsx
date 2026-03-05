@@ -1,26 +1,27 @@
 import React from "react";
 import "./Footer.css";
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-container">
 
-    
         <div className="footer-col">
           <h3>Exclusive</h3>
-          <h4>Subscribe</h4>
-          <p>Get 10% off your first order</p>
+          <h4>{t("subscribe")}</h4>
+          <p>{t("firstOrderDiscount")}</p>
 
           <div className="subscribe-box">
-            <input type="email" placeholder="Enter your email" />
+            <input type="email" placeholder={t("enterEmail")} />
             <button>➤</button>
           </div>
         </div>
 
-        
         <div className="footer-col">
-          <h4>Support</h4>
+          <h4>{t("support")}</h4>
           <p>
             111 Bijoy sarani, Dhaka, <br />
             DH 1515, Bangladesh.
@@ -29,32 +30,30 @@ const Footer = () => {
           <p>+88015-88888-9999</p>
         </div>
 
-      
         <div className="footer-col">
-          <h4>Account</h4>
+          <h4>{t("account")}</h4>
           <ul>
-            <li>My Account</li>
-            <li>Login / Register</li>
-            <li>Cart</li>
-            <li>Wishlist</li>
-            <li>Shop</li>
-          </ul>
-        </div>
-
-      
-        <div className="footer-col">
-          <h4>Quick Link</h4>
-          <ul>
-            <li>Privacy Policy</li>
-            <li>Terms Of Use</li>
-            <li>FAQ</li>
-            <li>Contact</li>
+            <li>{t("myAccount")}</li>
+            <li>{t("loginRegister")}</li>
+            <li>{t("cart")}</li>
+            <li>{t("wishlist")}</li>
+            <li>{t("shop")}</li>
           </ul>
         </div>
 
         <div className="footer-col">
-          <h4>Download App</h4>
-          <p>Save $3 with App New User Only</p>
+          <h4>{t("quickLink")}</h4>
+          <ul>
+            <li>{t("privacyPolicy")}</li>
+            <li>{t("termsOfUse")}</li>
+            <li>{t("faq")}</li>
+            <li>{t("contact")}</li>
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <h4>{t("downloadApp")}</h4>
+          <p>{t("saveWithApp")}</p>
 
           <div className="app-buttons">
             <img
@@ -68,17 +67,16 @@ const Footer = () => {
           </div>
 
           <div className="socials">
-            <span>facebook</span>
-            <span>telegram</span>
-            {/* <span>ig</span> */}
-            <span>instagram</span>
+            <span>Facebook</span>
+            <span>Telegram</span>
+            <span>Instagram</span>
           </div>
         </div>
 
       </div>
 
       <div className="footer-bottom">
-        © Copyright Rimel 2022. All right reserved
+        © {t("copyright")} 2022. {t("allRightsReserved")}
       </div>
     </footer>
   );
