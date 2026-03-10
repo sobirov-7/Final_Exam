@@ -5,6 +5,8 @@ import { BsSmartwatch } from "react-icons/bs";
 import { useDispatch } from "react-redux"; 
 import { addToCart, addToWishlist } from "../redux/cartSlice"; 
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import img2 from '../assets/14max.svg';
 import img5 from '../assets/614.svg';
 import img6 from '../assets/611.svg';
@@ -19,7 +21,6 @@ import img15 from '../assets/mers.svg';
 import img16 from '../assets/butsa.svg';
 import img17 from '../assets/joystik.svg';
 import img18 from '../assets/vitrovka.svg';
-import { useTranslation } from 'react-i18next'
 
 const products = [
   { id: 1, name: "HAVIT HV-G92 Gamepad", price: 120, oldPrice: 160, discount: "-40%", img: img6, rating: 5, reviews: 88 },
@@ -29,7 +30,7 @@ const products = [
   { id: 5, name: "AK-900 Wired Keyboard", price: 960, oldPrice: 1160, discount: "-35%", img: img7, rating: 4, reviews: 75 },
 ];
 
-const Home = () => {
+const Home = ({ search }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -37,9 +38,13 @@ const Home = () => {
   const handleAddToCart = (item) => dispatch(addToCart(item));
   const handleAddToWish = (item) => dispatch(addToWishlist(item));
 
+  const filteredProducts = products.filter(item =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
-      {/* SECTION 2 */}
+      {/* SECTION 2 - Banner */}
       <section className="section2">
         <div className="section2_container">
           <div className="section2_left">
@@ -82,68 +87,7 @@ const Home = () => {
         </div>
 
         <div className="section3_cards">
-          {products.map(item => (
-            <div className="card" key={item.id}>
-              <div className="img_box">
-                {item.discount && <span className="discount">{item.discount}</span>}
-                <div className="icons">
-                  <FaRegHeart onClick={() => handleAddToWish(item)} />
-                  <FaEye onClick={() => navigate(`/cart/${item.id}`)} />
-                </div>
-                <img src={item.img} alt={item.name} />
-                <button className="add_cart" onClick={() => handleAddToCart(item)}>{t("addToCart")}</button>
-              </div>
-              <h3>{item.name}</h3>
-              <div className="price">
-                <span className="new">${item.price}</span>
-                {item.oldPrice && <span className="old">${item.oldPrice}</span>}
-              </div>
-              {item.rating && (
-                <div className="rating">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} className={i < item.rating ? "star active" : "star"} />
-                  ))}
-                  <span>({item.reviews})</span>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="btn_box">
-          <button>{t("viewAllProducts")}</button>
-        </div>
-      </section>
-
-      {/* SECTION 5 - Categories */}
-      <section className="section5">
-        <div className="section5-header">
-          <div>
-            <span className="section5-label">{t("categories")}</span>
-            <h2>{t("browseByCategory")}</h2>
-          </div>
-          <div className="section5-arrows">
-            <button className="arrow-btn">←</button>
-            <button className="arrow-btn">→</button>
-          </div>
-        </div>
-        <div className="section5-categories">
-          <div className="category-card"><FaMobileAlt /><p>{t("phones")}</p></div>
-          <div className="category-card"><FaDesktop /><p>{t("computers")}</p></div>
-          <div className="category-card"><BsSmartwatch /><p>{t("smartwatch")}</p></div>
-          <div className="category-card"><FaCamera /><p>{t("camera")}</p></div>
-          <div className="category-card"><FaHeadphones /><p>{t("headphones")}</p></div>
-          <div className="category-card"><FaGamepad /><p>{t("gaming")}</p></div>
-        </div>
-      </section>
-
-      <section className="section3">
-        <div className="section3_top">
-          <span className="today">{t("todays")}</span>
-          <h2>{t("flashSales")}</h2>
-        </div>
-
-        <div className="section3_cards">
-          {products.map(item => (
+          {filteredProducts.map(item => (
             <div className="card" key={item.id}>
               <div className="img_box">
                 {item.discount && <span className="discount">{item.discount}</span>}
@@ -195,16 +139,30 @@ const Home = () => {
         </div>
       </section>
 
-      {/* SECTION 5 - Products */}
+      {/* SECTION 5 - Categories */}
+      <section className="section5">
+        <div className="section5-header">
+          <div>
+            <span className="section5-label">{t("categories")}</span>
+            <h2>{t("browseByCategory")}</h2>
+          </div>
+        </div>
+        <div className="section5-categories">
+          <div className="category-card"><FaMobileAlt /><p>{t("phones")}</p></div>
+          <div className="category-card"><FaDesktop /><p>{t("computers")}</p></div>
+          <div className="category-card"><BsSmartwatch /><p>{t("smartwatch")}</p></div>
+          <div className="category-card"><FaCamera /><p>{t("camera")}</p></div>
+          <div className="category-card"><FaHeadphones /><p>{t("headphones")}</p></div>
+          <div className="category-card"><FaGamepad /><p>{t("gaming")}</p></div>
+        </div>
+      </section>
+
+      {/* SECTION 6 - More Products */}
       <section className="section5">
         <div className="section5_container">
           <div className="section5_header">
             <p className="section5_subtitle">{t("ourProducts")}</p>
             <h2 className="section5_title">{t("exploreProducts")}</h2>
-            <div className="section5_arrows">
-              <button>{"<"}</button>
-              <button>{">"}</button>
-            </div>
           </div>
 
           <div className="section5_grid">
@@ -223,67 +181,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* <section className="new-arrival">
-        <div className="section-header">
-          <span className="red-box"></span>
-          <span className="section-subtitle">{t("featured")}</span>
-        </div>
-        <h2 className="section-title">{t("newArrival")}</h2>
-        <div className="arrival-grid">
-          <div className="arrival-big">
-            <img src="https://placehold.co/500x400?text=PS5" alt="PS5" />
-            <div className="arrival-overlay">
-              <h3>{t("ps5Title")}</h3>
-              <p>{t("ps5Desc")}</p>
-              <button>{t("shopNow")}</button>
-            </div>
-          </div>
-          <div className="arrival-right">
-            <div className="arrival-card large">
-              <img src="https://placehold.co/400x200?text=Women" alt="Women" />
-              <div className="arrival-overlay">
-                <h3>{t("womenCollections")}</h3>
-                <button>{t("shopNow")}</button>
-              </div>
-            </div>
-            <div className="arrival-small-row">
-              <div className="arrival-card">
-                <img src="https://placehold.co/200x200?text=Speakers" alt="Speakers" />
-                <div className="arrival-overlay">
-                  <h3>{t("speakers")}</h3>
-                  <button>{t("shopNow")}</button>
-                </div>
-              </div>
-              <div className="arrival-card">
-                <img src="https://placehold.co/200x200?text=Perfume" alt="Perfume" />
-                <div className="arrival-overlay">
-                  <h3>{t("perfume")}</h3>
-                  <button>{t("shopNow")}</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="services">
-        <div className="service-item">
-          <div className="service-icon">🚚</div>
-          <h4>{t("freeFastDelivery")}</h4>
-          <p>{t("freeFastDeliveryDesc")}</p>
-        </div>
-        <div className="service-item">
-          <div className="service-icon">🎧</div>
-          <h4>{t("customerService")}</h4>
-          <p>{t("customerServiceDesc")}</p>
-        </div>
-        <div className="service-item">
-          <div className="service-icon">✅</div>
-          <h4>{t("moneyBack")}</h4>
-          <p>{t("moneyBackDesc")}</p>
-        </div>
-      </div> */}
     </>
   );
 };

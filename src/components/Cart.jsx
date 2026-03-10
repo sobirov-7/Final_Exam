@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { changeQuantity, removeFromCart } from "../redux/cartSlice"
 import "./Cart.css"
 import { useTranslation } from "react-i18next"
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Cart = () => {
   const { t } = useTranslation()
@@ -24,6 +25,8 @@ const Cart = () => {
       setDiscount(0)
     }
   }
+
+  let navigate = useNavigate()
 
   const total = subtotal - discount
 
@@ -101,7 +104,7 @@ const Cart = () => {
             <p>{t("subtotalAmount", { subtotal })}</p>
             <p>{t("shipping")}</p>
             <p>{t("totalAmount", { total })}</p>
-            <button disabled={cart.length === 0}>
+            <button  onClick={()=> navigate("/checkout")}>
               {t("proceedToCheckout")}
             </button>
           </div>
